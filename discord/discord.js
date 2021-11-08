@@ -122,7 +122,6 @@ clientDiscord.once('ready', async () => {
         members.map(async memb => {
           const Pending = guild.roles.cache.find(role => role.name === 'Pending');
 
-          // const Bot = guild.roles.cache.find(role => role.name === 'Bot');
           const Visitor = guild.roles.cache.find(role => role.name === 'Visitor');
           const System = guild.roles.cache.find(role => role.name === 'System');
           const Verified = guild.roles.cache.find(role => role.name === 'Verified');
