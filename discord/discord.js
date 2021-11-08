@@ -190,8 +190,8 @@ clientDiscord.on('messageCreate', async (msg) => {
   server.msg.Server(msg);
 
   // owner
-  const testOwn = require('../discord/owner/test/own.js');
-  testOwn.msg.Own(msg);
+  // const testOwn = require('../discord/owner/test/own.js');
+  // testOwn.msg.Own(msg);
 
   // const send = require('../discord/owner/send/send.js');
   // send.msg.Send(msg);
