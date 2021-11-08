@@ -134,12 +134,6 @@ clientDiscord.once('ready', async () => {
             }
           }
 
-          /* if (memb.user.bot === true) {
-            if (Bot) {
-              memb.roles.add(Bot);
-            }
-          }
-          else */
           if (memb.user.bot === false) {
             if (Visitor) {
               memb.roles.add(Visitor);
