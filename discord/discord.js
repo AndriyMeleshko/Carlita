@@ -1,6 +1,5 @@
 console.log('file discord');
 
-const tServ = require('../discord/main/server/server.js');
 const tStatus = require('../discord/owner/status/status.js');
 
 const fs = require('fs');
