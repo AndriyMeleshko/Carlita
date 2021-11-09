@@ -50,6 +50,8 @@ const clientDiscord = new Client({
 });
 
 clientDiscord.once('ready', async () => {
+  if (!fs.existsSync('./discord/main/server/server.sqlite')) return;
+
   require('../discord/owner/status/status.js');
 
   const lStatus = await tStatus.status.findOne({ where: { title: 'status' } });
@@ -85,7 +87,7 @@ clientDiscord.once('ready', async () => {
           clientDiscord.user.setPresence({ activities: [{ name: `${lStat.name}`, type: `${lStat.type}` }], status: `${lStat.status}` });
         }
       }
-    }, 60000);
+    }, 10000);
   }
 
   if (fs.existsSync('./discord/main/server/server.js')) {
@@ -113,56 +115,17 @@ clientDiscord.once('ready', async () => {
 
   require('../discord/main/defcom/defcom.js');
 
+  require('../discord/main/roles/roles.js');
+
   require('../discord/owner/test/own.js');
 
-  setInterval(() => {
-    clientDiscord.guilds.cache.map(async (guild) => {
-      if (guild.id === env.clientGuildId) {
-        const members = await guild.members.fetch();
-        members.map(async memb => {
-          const Pending = guild.roles.cache.find(role => role.name === 'Pending');
-
-          const Visitor = guild.roles.cache.find(role => role.name === 'Visitor');
-          const System = guild.roles.cache.find(role => role.name === 'System');
-          const Verified = guild.roles.cache.find(role => role.name === 'Verified');
-          const MFA = guild.roles.cache.find(role => role.name === 'MFA');
-
-          if (memb.pending === true) {
-            if (Pending) {
-              memb.roles.add(Pending);
-            }
-          }
-
-          if (memb.user.bot === false) {
-            if (Visitor) {
-              memb.roles.add(Visitor);
-            }
-          }
-
-          if (memb.user.system === true) {
-            if (System) {
-              memb.roles.add(System);
-            }
-          }
-
-          if (memb.user.verified === true) {
-            if (Verified) {
-              memb.roles.add(Verified);
-            }
-          }
-
-          if (memb.user.mfaEnabled === true) {
-            if (MFA) {
-              memb.roles.add(MFA);
-            }
-          }
-        });
-      }
-    });
-  }, 60000);
+  const roles = require('../discord/main/roles/roles.js');
+  roles.ready.Roles();
 });
 
 clientDiscord.on('messageCreate', async (msg) => {
+  if (!fs.existsSync('./discord/main/server/server.sqlite')) return;
+
   if (msg.author.bot) return;
 
   const time = require('../time/time.js');
@@ -190,11 +153,11 @@ clientDiscord.on('messageCreate', async (msg) => {
   server.msg.Server(msg);
 
   // owner
-  // const testOwn = require('../discord/owner/test/own.js');
-  // testOwn.msg.Own(msg);
+  const testOwn = require('../discord/owner/test/own.js');
+  testOwn.msg.Own(msg);
 
-  // const send = require('../discord/owner/send/send.js');
-  // send.msg.Send(msg);
+  const send = require('../discord/owner/send/send.js');
+  send.msg.Send(msg);
 
   const status = require('../discord/owner/status/status.js');
   status.msg.Status(msg);
@@ -216,24 +179,6 @@ clientDiscord.on('messageCreate', async (msg) => {
   attachment.map(async attach => {
     console.log(attach.url);
   });
-
-  const lServ = await tServ.server.findOne({ where: { guildid: `${msg.guild.id}` } });
-  if (!lServ) return;
-
-  const myPref = `${lServ.guildprefix}`;
-
-  if (!msg.content.startsWith(myPref)) return;
-  const args = msg.content.slice(myPref.length).toLowerCase().split(/ +/);
-  const command = args.shift().toLowerCase();
-
-  const owner = msg.member.id === env.ownerDiscordId;
-
-  if (command === 'cruella') {
-    if (owner) {
-      msg.delete();
-      msg.channel.send({ files: ['https://cdn.discordapp.com/attachments/891644815274545163/906113308376068096/Cruella.mp4'] });
-    }
-  }
 
   /* const filter = m => m.content.startsWith('!vote');
   msg.channel.awaitMessages({ filter, max: 1, time: 60_000, errors: ['time'] })
