@@ -50,8 +50,6 @@ module.exports.msg = {
   Send: async (msg) => {
     if (msg.author.bot) return;
 
-    msg.channel.send({ files: ['https://cdn.discordapp.com/attachments/891644815274545163/906113308376068096/Cruella.mp4'] });
-
     const lServ = await tServ.server.findOne({ where: { guildid: `${msg.guild.id}` } });
     if (!lServ) return;
 
@@ -76,7 +74,7 @@ module.exports.msg = {
 
 
         if (!channelsend) {
-          console.log(channelsend);
+          // console.log(channelsend);
           return msg.channel.send('Add a valid Channel ID.');
         }
 
@@ -93,6 +91,37 @@ module.exports.msg = {
         }
         else {
           channelsend.send(args1.join(' '));
+        }
+      }
+    }
+
+    if (command === 'sende') {
+      if (owner) {
+        const args0 = args.slice(0, 1);
+        const args1 = args.slice(1);
+
+        if (!args.length) {
+          return msg.channel.send('Add: emb / ID Content');
+        }
+
+        const channelsend = clientDiscord.channels.cache.get(`${args0}`);
+
+
+        if (!channelsend) {
+          console.log(channelsend);
+          return msg.channel.send('Add a valid Channel ID.');
+        }
+
+        if (!`${args1}`) {
+          return msg.channel.send('Add: Content');
+        }
+        else {
+          const embed = new MessageEmbed()
+            .setAuthor('Discord ', env.ysgif, 'https://discord.com/')
+            .setDescription(args1.join(' '))
+            .setImage()
+            .setFooter(`${msg.guild.name}`, env.ysgif);
+          channelsend.send({ embeds: [embed] });
         }
       }
     }

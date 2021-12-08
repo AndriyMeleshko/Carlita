@@ -40,10 +40,10 @@ module.exports = { status };
 
 module.exports.msg = {
   Status: async (msg) => {
-    if (msg.author.bot) return;
-
     if (!fs.existsSync('./discord/main/server/server.sqlite')) return;
     if (!fs.existsSync('./discord/owner/status/status.sqlite')) return;
+
+    if (msg.author.bot) return;
 
     const lServ = await tServ.server.findOne({ where: { guildid: `${msg.guild.id}` } });
     if (!lServ) return;

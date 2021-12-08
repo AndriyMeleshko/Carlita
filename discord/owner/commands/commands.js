@@ -6,6 +6,44 @@ const fs = require('fs');
 const env = process.env;
 
 module.exports.msg = {
+  Commands: async (msg) => {
+    if (msg.author.bot) return;
+
+    if (!fs.existsSync('./discord/main/server/server.sqlite')) return;
+
+    const lServ = await tServ.server.findOne({ where: { guildid: `${msg.guild.id}` } });
+    if (!lServ) return;
+
+    const myPref = `${lServ.guildprefix}`;
+    // const myLang = `${lServ.guildlanguage}`;
+
+    if (!msg.content.startsWith(myPref)) return;
+    const args = msg.content.slice(myPref.length).split(/ +/);
+    const command = args.shift().toLowerCase();
+
+    const owner = msg.member.id === env.ownerDiscordId;
+
+    if (!owner) return;
+
+    if (command === 'mt') {
+      const webhooks = await msg.channel.fetchWebhooks();
+      const webhook = webhooks.first();
+
+      await webhook.send({
+        content: 'Look ma! I\'m in a thread!',
+        threadId: '123456789012345678',
+      });
+    }
+
+
+    if (command === 'jt') {
+      msg.channel.send('test');
+      const thread = msg.channel.threads.cache.find(x => x.name === `${args[0]}`);
+      if (thread.joinable) await thread.join();
+      msg.channel.send('Hello');
+    }
+  },
+
   Embed: async (msg) => {
     if (msg.author.bot) return;
 
@@ -21,10 +59,17 @@ module.exports.msg = {
     const args = msg.content.slice(myPref.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-    const owner = msg.member.id === env.ownerdiscordid;
+    const owner = msg.member.id === env.ownerDiscordId;
+
     if (!owner) return;
 
+    if (command === 'cruella') {
+      msg.delete();
+      msg.channel.send({ files: ['https://cdn.discordapp.com/attachments/891644815274545163/906113308376068096/Cruella.mp4'] });
+    }
+
     if (command === 'msg') {
+
       msg.delete();
 
       if (!args.length) {
@@ -41,6 +86,7 @@ module.exports.msg = {
             .setFooter('Discord', env.discordgif);
           return msg.channel.send({ embeds: [exampleEmbed] });
         }
+        else
 
         if (myLang === 'uk') {
           const exampleEmbed = new MessageEmbed()
@@ -61,6 +107,7 @@ module.exports.msg = {
     }
 
     if (command === 'msge') {
+
       msg.delete();
 
       const commandArgs = args.join(' ');
@@ -82,6 +129,7 @@ module.exports.msg = {
             .setFooter('Discord', env.discordgif);
           return msg.channel.send({ embeds: [exampleEmbed] });
         }
+        else
 
         if (myLang === 'uk') {
           const exampleEmbed = new MessageEmbed()

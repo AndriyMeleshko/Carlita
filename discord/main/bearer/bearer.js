@@ -1,5 +1,5 @@
-const tableTime = require('../../../time/time.js');
-const tableServ = require('../../../discord/main/server/server.js');
+const tTime = require('../../../time/time.js');
+const tServ = require('../../../discord/main/server/server.js');
 
 const Sequelize = require('sequelize');
 const fetch = require('node-fetch');
@@ -7,6 +7,21 @@ const moment = require('moment');
 const fs = require('fs');
 
 const env = process.env;
+
+setTimeout(async () => {
+
+  if (fs.existsSync('./time/time.sqlite')) {
+
+    const lTime = await tTime.time.findOne({ where: { name: 'time' } })
+      .catch(err => {
+        console.error(`${err.original} | File: bearer.js`);
+      });
+
+    if (lTime) {
+      console.log(`${moment().utc().locale('en').add(lTime.hours, 'h').format('hh:mm:ss a')} | File: bearer.js`);
+    }
+  }
+});
 
 const { MessageEmbed } = require('discord.js');
 
@@ -37,7 +52,7 @@ bearer.sync();
 setInterval(async () => {
   if (!fs.existsSync('./discord/main/bearer/bearer.sqlite')) bearer.sync();
 
-  const lTime = await tableTime.time.findOne({ where: { name: 'time' } });
+  const lTime = await tTime.time.findOne({ where: { name: 'time' } });
 
   const lBearer = await bearer.findOne({ where: { name: 'bearer' } });
 
@@ -58,7 +73,7 @@ setInterval(async () => {
           tokentype: `${jsonPost.token_type}`,
         });
         if (create) {
-          console.log(`${moment().locale('en').add(lTime.time, 'h').format('hh:mm:ss a')} | Bearer Created`);
+          console.log(`${moment().locale('en').add(lTime.hours, 'h').format('hh:mm:ss a')} | Bearer Created`);
         }
       })
       .catch(err => console.error(err));
@@ -88,24 +103,24 @@ setInterval(async () => {
             },
           });
           if (update) {
-            console.log(`${moment().locale('en').add(lTime.time, 'h').format('hh:mm:ss a')} | Bearer Update`);
+            console.log(`${moment().locale('en').add(lTime.hours, 'h').format('hh:mm:ss a')} | Bearer Update`);
           }
         })
         .catch(err => console.error(err));
     }
   }
-}, 60000);
+}, 60 * 1000);
 
 module.exports.msg = {
   Bearer: async (msg) => {
-    if (msg.author.bot) return;
-
     if (!fs.existsSync('./discord/main/bearer/bearer.sqlite')) return;
     if (!fs.existsSync('./discord/main/server/server.sqlite')) return;
 
-    const lTime = await tableTime.time.findOne({ where: { name: 'time' } });
+    if (msg.author.bot) return;
 
-    const lServ = await tableServ.server.findOne({ where: { guildid: `${msg.guild.id}` } });
+    const lTime = await tTime.time.findOne({ where: { name: 'time' } });
+
+    const lServ = await tServ.server.findOne({ where: { guildid: `${msg.guild.id}` } });
     if (!lServ) return;
 
     const myPref = `${lServ.guildprefix}`;
@@ -149,7 +164,7 @@ module.exports.msg = {
               tokentype: `${jsonPost.token_type}`,
             });
             if (create) {
-              console.log(`${moment().locale('en').add(lTime.time, 'h').format('hh:mm:ss a')} | Bearer Create`);
+              console.log(`${moment().locale('en').add(lTime.hours, 'h').format('hh:mm:ss a')} | Bearer Create`);
             }
           })
           .catch(err => console.error(err));
@@ -173,12 +188,12 @@ module.exports.msg = {
           .addFields(
             { name: '\u200B', value: '\u200B' },
             { name: 'Name', value: `${nameBearer}`, inline: true },
-            { name: 'TimePlus', value: `${timeplusBearer}\n${timeplus2Bearer}`, inline: true },
-            { name: 'AccessToken', value: `${accesstokenBearer}`, inline: false },
-            { name: 'RefreshToken', value: `${refreshtokenBearer}`, inline: true },
-            { name: 'ExpiresIn', value: `${expiresinBearer}`, inline: true },
+            { name: 'Creation Time ', value: `${timeplusBearer}\n${timeplus2Bearer}`, inline: true },
+            { name: 'Access Token', value: `${accesstokenBearer}`, inline: false },
+            { name: 'Refresh Token', value: `${refreshtokenBearer}`, inline: true },
+            { name: 'Expires In', value: `${expiresinBearer}`, inline: true },
             { name: 'Scope', value: `${scopeBearer}`, inline: true },
-            { name: 'TokenType', value: `${tokentypeBearer}`, inline: true },
+            { name: 'Token Type', value: `${tokentypeBearer}`, inline: true },
             { name: '\u200B', value: '\u200B' },
           )
           .setTimestamp()
