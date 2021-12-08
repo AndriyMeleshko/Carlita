@@ -134,13 +134,22 @@ module.exports.ready = {
 
           if (Stream.data[0] === undefined) {
 
-            await live.update({
-              timeout: '0',
-            }, {
-              where: {
-                userlogin: `${userlogin[iLive]}`,
-              },
-            });
+            const lType = await live.findOne({ where: {
+              userlogin: `${userlogin[iLive]}`,
+              type: 'offline',
+            } });
+
+            if (lType) return;
+
+            if (lUser.timeout !== '0') {
+              await live.update({
+                timeout: '0',
+              }, {
+                where: {
+                  userlogin: `${userlogin[iLive]}`,
+                },
+              });
+            }
 
             const lTimeout0 = await live.findOne({ where: {
               userlogin: `${userlogin[iLive]}`,
@@ -148,13 +157,6 @@ module.exports.ready = {
             } });
 
             if (!lTimeout0) return;
-
-            const lType = await live.findOne({ where: {
-              userlogin: `${userlogin[iLive]}`,
-              type: 'online',
-            } });
-
-            if (!lType) return;
 
             const lLive = await live.findOne({ where: {
               codename: 'live',
@@ -315,30 +317,30 @@ module.exports.ready = {
                     const lCategory = `${lUser.category === 'on'}`;
 
                     if (lGame) {
-                      if (`${lUser.gamename}` === `${Stream.data[0].game_name}`) {
+                      channel.send({ content: 'game', embeds: [embed] });
 
-                      }
-                      else {
-                        return;
+                      if (lCategory) {
+                        channel.send({ content: 'game category', embeds: [embed] });
                       }
 
                       if (lRole) {
+                        channel.send({ content: `game role ${lLive.rolename}`, embeds: [embed] });
 
-                        if (!lCategory) {
-
-                          channel.send({ content: `${lLive.rolename}`, embeds: [embed] });
-                        }
-                        if (lRole.rolename === '0') {
-                          channel.send({ content: '6', embeds: [embed] });
+                        if (lCategory) {
+                          channel.send({ content: 'game role category', embeds: [embed] });
                         }
                       }
-                      if (lCategory.category === 'off') {
-                        if (lRole.rolename === '0') {
-                          channel.send({ content: `8 ${lLive.rolename}`, embeds: [embed] });
-                        }
-                        if (lRole.rolename === '0') {
-                          channel.send({ content: '6', embeds: [embed] });
-                        }
+                    }
+
+                    if (lCategory) {
+                      channel.send({ content: 'category', embeds: [embed] });
+                    }
+
+                    if (lRole) {
+                      channel.send({ content: `role ${lLive.rolename}`, embeds: [embed] });
+
+                      if (lCategory) {
+                        channel.send({ content: 'role category', embeds: [embed] });
                       }
                     }
                   }
