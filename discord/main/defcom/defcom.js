@@ -49,7 +49,7 @@ module.exports.msg = {
     const args2l = args.slice(2).join(' ');
     // const args3l = args.slice(3).join(' ');
 
-    const Strip = env.stripmsg300;
+    const StripMsg = env.stripMsg;
 
     const owner = msg.member.id !== env.ownerDiscordId;
     if (owner) return;
@@ -64,7 +64,7 @@ module.exports.msg = {
               { name: '\u200B', value: '\u200B' },
               { name: 'Warning!', value: 'Add: add / list / del', inline: true },
             )
-            .setImage(Strip)
+            .setImage(StripMsg)
             .setFooter('Discord', env.discordgif);
           return msg.channel.send({ embeds: [exampleEmbed] });
         }
@@ -76,7 +76,7 @@ module.exports.msg = {
               { name: '\u200B', value: '\u200B' },
               { name: 'Увага!', value: 'Додайте: add / list / del', inline: true },
             )
-            .setImage(Strip)
+            .setImage(StripMsg)
             .setFooter('Discord', env.discordgif);
           return msg.channel.send({ embeds: [exampleEmbed] });
         }
@@ -92,7 +92,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Warning!', value: 'Add: New command.', inline: true },
               )
-              .setImage(Strip)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             return msg.channel.send({ embeds: [exampleEmbed] });
           }
@@ -104,7 +104,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Увага!', value: 'Додайте: Нову команду.', inline: true },
               )
-              .setImage(Strip)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             return msg.channel.send({ embeds: [exampleEmbed] });
           }
@@ -130,7 +130,7 @@ module.exports.msg = {
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Warning!', value: `Command: **${args[1]}** added successfully.`, inline: true },
                   )
-                  .setImage(Strip)
+                  .setImage(StripMsg)
                   .setFooter('Discord', env.discordgif);
                 msg.channel.send({ embeds: [exampleEmbed] });
               }
@@ -142,7 +142,7 @@ module.exports.msg = {
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Увага!', value: `Команда: **${args[1]}** успішно додана.`, inline: true },
                   )
-                  .setImage(Strip)
+                  .setImage(StripMsg)
                   .setFooter('Discord', env.discordgif);
                 msg.channel.send({ embeds: [exampleEmbed] });
               }
@@ -165,7 +165,7 @@ module.exports.msg = {
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Warning!', value: `Command: **${args[1]}** added successfully.`, inline: true },
                   )
-                  .setImage(Strip)
+                  .setImage(StripMsg)
                   .setFooter('Discord', env.discordgif);
                 msg.channel.send({ embeds: [exampleEmbed] });
               }
@@ -177,7 +177,7 @@ module.exports.msg = {
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Увага!', value: `Команда: **${args[1]}** успішно додана.`, inline: true },
                   )
-                  .setImage(Strip)
+                  .setImage(StripMsg)
                   .setFooter('Discord', env.discordgif);
                 msg.channel.send({ embeds: [exampleEmbed] });
               }
@@ -194,7 +194,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Warning!', value: `Command: **${args[1]}** already exists.`, inline: true },
               )
-              .setImage(Strip)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             msg.channel.send({ embeds: [exampleEmbed] });
           }
@@ -206,7 +206,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Увага!', value: `Команда: **${args[1]}** вже існує.`, inline: true },
               )
-              .setImage(Strip)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             msg.channel.send({ embeds: [exampleEmbed] });
           }
@@ -226,7 +226,7 @@ module.exports.msg = {
               { name: '\u200B', value: '\u200B' },
               { name: 'Command', value: `${defCommand}`, inline: true },
             )
-            .setImage(Strip)
+            .setImage(StripMsg)
             .setFooter('Discord', env.discordgif);
           msg.channel.send({ embeds: [exampleEmbed] });
         }
@@ -239,7 +239,7 @@ module.exports.msg = {
               { name: '\u200B', value: '\u200B' },
               { name: 'Команда', value: `${defCommand}`, inline: true },
             )
-            .setImage(Strip)
+            .setImage(StripMsg)
             .setFooter('Discord', env.discordgif);
           msg.channel.send({ embeds: [exampleEmbed] });
         }
@@ -255,7 +255,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Warning!', value: 'Add: Command from the list. ', inline: true },
               )
-              .setImage(Strip)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             msg.channel.send({ embeds: [exampleEmbed] });
           }
@@ -267,7 +267,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Увага!', value: 'Додайте: Команду зі списку.', inline: true },
               )
-              .setImage(Strip)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             msg.channel.send({ embeds: [exampleEmbed] });
           }
@@ -288,7 +288,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Warning!', value: `Command: **${args[1]}** successfully deleted.`, inline: true },
                 )
-                .setImage(Strip)
+                .setImage(StripMsg)
                 .setFooter('Discord', env.discordgif);
               msg.channel.send({ embeds: [exampleEmbed] });
             }
@@ -300,7 +300,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Увага!', value: `Команда: **${args[1]}** успішно видалена.`, inline: true },
                 )
-                .setImage(Strip)
+                .setImage(StripMsg)
                 .setFooter('Discord', env.discordgif);
               msg.channel.send({ embeds: [exampleEmbed] });
             }

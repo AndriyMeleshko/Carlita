@@ -44,7 +44,8 @@ module.exports = { server };
 server.sync();
 
 module.exports.interaction = {
-  Server: async (interaction) => {
+  ServerMenu: async (interaction) => {
+
     if (!interaction.isSelectMenu()) return;
 
     const lServers = await server.findAll({ attributes: ['guildname', 'guildid', 'guildprefix', 'guildlanguage'] });
@@ -271,7 +272,7 @@ module.exports.msg = {
     const myPref = `${lServ.guildprefix}`;
     const myLang = `${lServ.guildlanguage}`;
 
-    const Strip300 = env.stripmsg300;
+    const StripMsg = env.stripMsg;
 
     if (!msg.content.startsWith(myPref)) return;
     const args = msg.content.slice(myPref.length).toLowerCase().split(/ +/);
@@ -292,7 +293,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Prefix:', value: `${lServ.guildprefix}`, inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setTimestamp()
               .setFooter('Discord', env.discordgif);
             return msg.channel.send({ embeds: [exampleEmbed] });
@@ -306,7 +307,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Префікс:', value: `${lServ.guildprefix}`, inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setTimestamp()
               .setFooter('Discord', env.discordgif);
             return msg.channel.send({ embeds: [exampleEmbed] });
@@ -325,7 +326,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Warning!', value: `The prefix: **${args[0]}** is already set.` },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setTimestamp()
                 .setFooter('Discord', env.discordgif);
               return msg.channel.send({ embeds: [exampleEmbed] });
@@ -339,7 +340,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Увага!', value: `Префікс: **${args[0]}** вже встановлений.` },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setTimestamp()
                 .setFooter('Discord', env.discordgif);
               return msg.channel.send({ embeds: [exampleEmbed] });
@@ -362,7 +363,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Congratulations!', value: `Prefix replaced with: **${args[0]}**` },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setTimestamp()
                 .setFooter('Discord', env.discordgif);
               msg.channel.send({ embeds: [exampleEmbed] });
@@ -376,7 +377,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Вітаю!', value: `Префікс замінений на: **${args[0]}**` },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setTimestamp()
                 .setFooter('Discord', env.discordgif);
               msg.channel.send({ embeds: [exampleEmbed] });
@@ -398,7 +399,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Language:', value: `**${lServ.guildlanguage}** / sp / uk`, inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setTimestamp()
               .setFooter('Discord', env.discordgif);
             return msg.channel.send({ embeds: [exampleEmbed] });
@@ -412,7 +413,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Мова:', value: `en / sp / **${lServ.guildlanguage}**`, inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setTimestamp()
               .setFooter('Discord', env.discordgif);
             return msg.channel.send({ embeds: [exampleEmbed] });
@@ -428,7 +429,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Warning!', value: 'English is already installed.' },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setTimestamp()
               .setFooter('Discord', env.discordgif);
             return msg.channel.send({ embeds: [exampleEmbed] });
@@ -449,7 +450,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Congratulations!', value: 'The language has been replaced by English.' },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setTimestamp()
               .setFooter('Discord', env.discordgif);
             return msg.channel.send({ embeds: [exampleEmbed] });
@@ -465,7 +466,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Увага!', value: 'Вже встановлена українська мова.' },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setTimestamp()
               .setFooter('Discord', env.discordgif);
             return msg.channel.send({ embeds: [exampleEmbed] });
@@ -486,7 +487,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Вітаю!', value: 'Мова замінена на українську.' },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setTimestamp()
               .setFooter('Discord', env.discordgif);
             return msg.channel.send({ embeds: [exampleEmbed] });
@@ -502,7 +503,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Warning!', value: 'Sorry, spanish is missing.' },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setTimestamp()
               .setFooter('Discord', env.discordgif);
             return msg.channel.send({ embeds: [exampleEmbed] });
@@ -516,7 +517,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Увага!', value: 'Вибачте, іспанська мова відсутня.' },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setTimestamp()
               .setFooter('Discord', env.discordgif);
             return msg.channel.send({ embeds: [exampleEmbed] });
@@ -537,7 +538,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Warning!', value: 'Add: list', inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setTimestamp()
               .setFooter('Discord', env.discordgif);
             return msg.channel.send({ embeds: [exampleEmbed] });
@@ -551,7 +552,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Увага!', value: 'Додайте: list/ список', inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setTimestamp()
               .setFooter('Discord', env.discordgif);
             return msg.channel.send({ embeds: [exampleEmbed] });

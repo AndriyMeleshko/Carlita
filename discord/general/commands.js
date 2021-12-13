@@ -16,7 +16,7 @@ module.exports.msg = {
     if (!fs.existsSync('./discord/main/bearer/bearer.sqlite')) return;
     if (!fs.existsSync('./discord/main/server/server.sqlite')) return;
 
-    const Strip300 = env.stripmsg300;
+    const StripMsg = env.stripMsg;
 
     const lBearer = await tBearer.bearer.findOne({ where: { name: 'bearer' } });
     if (!lBearer) return;
@@ -48,7 +48,7 @@ module.exports.msg = {
             { name: '\u200B', value: '\u200B' },
             { name: 'Ping', value: `${new Date().getTime() - msg.createdTimestamp} ms`, inline: true },
           )
-          .setImage(Strip300)
+          .setImage(StripMsg)
           .setFooter('Discord', env.discordgif);
         msg.channel.send({ embeds: [exampleEmbed] });
       }
@@ -59,9 +59,9 @@ module.exports.msg = {
           .setDescription('Discord Ping')
           .addFields(
             { name: '\u200B', value: '\u200B' },
-            { name: 'Ping', value: `${new Date().getTime() - msg.createdTimestamp} mс`, inline: true },
+            { name: 'Пінг', value: `${new Date().getTime() - msg.createdTimestamp} мс`, inline: true },
           )
-          .setImage(Strip300)
+          .setImage(StripMsg)
           .setFooter('Discord', env.discordgif);
         msg.channel.send({ embeds: [exampleEmbed] });
       }
@@ -90,7 +90,7 @@ module.exports.msg = {
             { name: '\u200B', value: '\u200B' },
             { name: 'Topic', value: `${msg.channel.topic || 'The topic is missing.'}`, inline: true },
           )
-          .setImage(Strip300)
+          .setImage(StripMsg)
           .setFooter('Discord', env.discordgif);
         msg.channel.send({ embeds: [exampleEmbed] });
       }
@@ -103,7 +103,7 @@ module.exports.msg = {
             { name: '\u200B', value: '\u200B' },
             { name: 'Тема', value: `${msg.channel.topic || 'Тема відсутня.'}`, inline: true },
           )
-          .setImage(Strip300)
+          .setImage(StripMsg)
           .setFooter('Discord', env.discordgif);
         msg.channel.send({ embeds: [exampleEmbed] });
       }
@@ -119,7 +119,7 @@ module.exports.msg = {
               { name: '\u200B', value: '\u200B' },
               { name: 'Warning!', value: 'Enter the name of the Twitch channel.', inline: true },
             )
-            .setImage(Strip300)
+            .setImage(StripMsg)
             .setFooter('Twitch', env.twitchgif);
           return msg.channel.send({ embeds: [exampleEmbed] });
         }
@@ -132,7 +132,7 @@ module.exports.msg = {
               { name: '\u200B', value: '\u200B' },
               { name: 'Увага!', value: 'Вкажіть ім\'я каналу Twitch.', inline: true },
             )
-            .setImage(Strip300)
+            .setImage(StripMsg)
             .setFooter('Twitch', env.twitchgif);
           return msg.channel.send({ embeds: [exampleEmbed] });
         }
@@ -150,7 +150,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Warning!', value: `Twitch channel **${args[0]}** not found.\nMake sure you enter the name correctly.`, inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Twitch', env.twitchgif);
               return msg.channel.send({ embeds: [exampleEmbed] });
             }
@@ -163,7 +163,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Увага!', value: `Канал Twitch **${args[0]}** не знайдений.\nПеревірте, чи правильно ви вказали ім'я.`, inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Twitch', env.twitchgif);
               return msg.channel.send({ embeds: [exampleEmbed] });
             }

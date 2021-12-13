@@ -381,7 +381,7 @@ module.exports.msg = {
     const myPref = `${lServ.guildprefix}`;
     const myLang = `${lServ.guildlanguage}`;
 
-    const Strip300 = env.stripmsg300;
+    const StripMsg = env.stripMsg;
 
     const channel = msg.mentions.channels.first();
     const role = msg.mentions.roles.first();
@@ -403,7 +403,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Увага!', value: 'Додайте: add/a / <@role> / list/l', inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setFooter('Twitch', env.twitchgif);
             return msg.channel.send({ embeds: [embed] });
           }
@@ -420,7 +420,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Увага!', value: 'Додайте: Сторінку Twitch.', inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Twitch', env.twitchgif);
               return msg.channel.send({ embeds: [embed] });
             }
@@ -439,7 +439,7 @@ module.exports.msg = {
                       { name: '\u200B', value: '\u200B' },
                       { name: 'Увага!', value: `Сторінка **${args[1]}** не знайдена.\nПеревірте правильність вводу імені сторінки.`, inline: true },
                     )
-                    .setImage(Strip300)
+                    .setImage(StripMsg)
                     .setFooter('Twitch', env.twitchgif);
                   return msg.channel.send({ embeds: [embed] });
                 }
@@ -458,7 +458,7 @@ module.exports.msg = {
                       { name: '\u200B', value: '\u200B' },
                       { name: 'Увага!', value: 'Додайте: <#channel>', inline: true },
                     )
-                    .setImage(Strip300)
+                    .setImage(StripMsg)
                     .setFooter('Twitch', env.twitchgif);
                   return msg.channel.send({ embeds: [embed] });
                 }
@@ -473,7 +473,7 @@ module.exports.msg = {
                       { name: '\u200B', value: '\u200B' },
                       { name: 'Увага!', value: 'Додайте: існуючий <#channel>', inline: true },
                     )
-                    .setImage(Strip300)
+                    .setImage(StripMsg)
                     .setFooter('Twitch', env.twitchgif);
                   return msg.channel.send({ embeds: [embed] });
                 }
@@ -506,7 +506,7 @@ module.exports.msg = {
                         { name: '\u200B', value: '\u200B' },
                         { name: 'Вітаю!', value: `Сторінка **${args[1]}** успішно додана.`, inline: true },
                       )
-                      .setImage(Strip300)
+                      .setImage(StripMsg)
                       .setFooter('Twitch', env.twitchgif);
                     msg.channel.send({ embeds: [embed] });
                   }
@@ -544,7 +544,7 @@ module.exports.msg = {
                         { name: '\u200B', value: '\u200B' },
                         { name: 'Вітаю!', value: `Сторінка **${args[1]}** успішно оновлена.`, inline: true },
                       )
-                      .setImage(Strip300)
+                      .setImage(StripMsg)
                       .setFooter('Twitch', env.twitchgif);
                     msg.channel.send({ embeds: [embed] });
                   }
@@ -564,7 +564,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Увага!', value: 'Додайте: Сторінку Twitch зі списку.', inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Twitch', env.twitchgif);
               return msg.channel.send({ embeds: [embed] });
             }
@@ -579,7 +579,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Увага!', value: 'Додайте: Назву гри.', inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Twitch', env.twitchgif);
               return msg.channel.send({ embeds: [embed] });
             }
@@ -598,7 +598,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Увага!', value: `Сторінка **${args[1]}** не знайдена.\nПеревірте правильність вводу імені сторінки.`, inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Twitch', env.twitchgif);
               return msg.channel.send({ embeds: [embed] });
             }
@@ -617,7 +617,7 @@ module.exports.msg = {
                       { name: '\u200B', value: '\u200B' },
                       { name: 'Увага!', value: `Гра **${args[2]}** не знайдена.\nПеревірте правильність вводу назви гри.`, inline: true },
                     )
-                    .setImage(Strip300)
+                    .setImage(StripMsg)
                     .setFooter('Twitch', env.twitchgif);
                   return msg.channel.send({ embeds: [embed] });
                 }
@@ -641,7 +641,7 @@ module.exports.msg = {
                       { name: '\u200B', value: '\u200B' },
                       { name: 'Вітаю!', value: `Гра **${args[2]}** успішно додана.`, inline: true },
                     )
-                    .setImage(Strip300)
+                    .setImage(StripMsg)
                     .setFooter('Twitch', env.twitchgif);
                   msg.channel.send({ embeds: [embed] });
                 }
@@ -660,7 +660,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Увага!', value: 'Додайте: Сторінку Twitch зі списку.', inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Twitch', env.twitchgif);
               return msg.channel.send({ embeds: [embed] });
             }
@@ -679,7 +679,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Увага!', value: `Сторінка **${args[1]}** не знайдена.\nПеревірте правильність вводу імені сторінки.`, inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Twitch', env.twitchgif);
               return msg.channel.send({ embeds: [embed] });
             }
@@ -694,7 +694,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Увага!', value: 'Додайте: @роль.', inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Twitch', env.twitchgif);
               return msg.channel.send({ embeds: [embed] });
             }
@@ -719,7 +719,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Вітаю!', value: `Роль ${role} успішно додана.`, inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Twitch', env.twitchgif);
               msg.channel.send({ embeds: [embed] });
             }
@@ -802,7 +802,7 @@ module.exports.msg = {
               // { name: 'Guild', value: `${guildname}`, inline: true },
               // { name: 'Guild ID', value: `${guildid}`, inline: true },
             )
-            .setImage(Strip300)
+            .setImage(StripMsg)
             .setFooter('Twitch', env.twitchgif);
           msg.channel.send({ embeds: [EmbedList] });
         }

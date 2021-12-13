@@ -16,8 +16,6 @@ module.exports.msg = {
 
     const myPref = `${lServ.guildprefix}`;
 
-    const Strip300 = env.stripmsg300;
-
     if (!msg.content.startsWith(myPref)) return;
     const args = msg.content.slice(myPref.length).toLowerCase().split(/ +/);
     const command = args.shift().toLowerCase();

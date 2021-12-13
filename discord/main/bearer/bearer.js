@@ -132,6 +132,8 @@ module.exports.msg = {
     const owner = msg.member.id === env.ownerDiscordId;
     if (!owner) return;
 
+    const StripMsg = env.StripMsg;
+
     if (command === 'bearer') {
       if (!args.length) {
         const exampleEmbed = new MessageEmbed()
@@ -140,9 +142,8 @@ module.exports.msg = {
           .addFields(
             { name: '\u200B', value: '\u200B' },
             { name: 'Warning!', value: 'Add: create / list', inline: true },
-            { name: '\u200B', value: '\u200B' },
           )
-          .setTimestamp()
+          .setImage(StripMsg)
           .setFooter('Twitch', env.twitchgif);
         return msg.channel.send({ embeds: [exampleEmbed] });
       }
@@ -194,9 +195,8 @@ module.exports.msg = {
             { name: 'Expires In', value: `${expiresinBearer}`, inline: true },
             { name: 'Scope', value: `${scopeBearer}`, inline: true },
             { name: 'Token Type', value: `${tokentypeBearer}`, inline: true },
-            { name: '\u200B', value: '\u200B' },
           )
-          .setTimestamp()
+          .setImage(StripMsg)
           .setFooter('Twitch', env.twitchgif);
         msg.channel.send({ embeds: [exampleEmbed] });
       }

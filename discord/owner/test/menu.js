@@ -42,16 +42,16 @@ module.exports.interaction = {
           ]),
       );
 
-    const Image = env.stripmenu;
+    const StripMenu = env.stripMenu;
 
     const Embed1 = new MessageEmbed()
       .setAuthor('Discord', '', 'https://discord.com/')
       .setDescription('Discord Timeout')
       .addFields(
         { name: '\u200B', value: '\u200B' },
-        { name: '\u200B', value: `Timeout: ${}` inline: true },
+        // { name: '\u200B', value: `Timeout: ${}` inline: true },
       )
-      .setImage(Image)
+      .setImage(StripMenu)
       .setFooter('Discord', env.discordgif);
 
     switch (`${interaction.customId}`) {

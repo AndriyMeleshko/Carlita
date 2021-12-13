@@ -234,8 +234,7 @@ module.exports.msg = {
     const lCom = await tCom.defcom.findAll({ attributes: ['command'] });
     const defaultCommand = lCom.map(l => l.command);
 
-    const Strip300 = env.stripmsg300;
-    const Strip400 = env.stripmsg400;
+    const StripMsg = env.stripMsg;
 
     if (!msg.content.startsWith(myPref)) return;
     const args = msg.content.slice(myPref.length).split(/ +/);
@@ -255,7 +254,7 @@ module.exports.msg = {
                 { name: 'Warning!', value: 'Add: info / add / timeout / embed / color / prefix / edit / list / del', inline: true },
                 { name: '\u200B', value: '[Command](https://discord.gg/kXtxDhSgtu)', inline: false },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             return msg.channel.send({ embeds: [embed] });
           }
@@ -269,7 +268,7 @@ module.exports.msg = {
                 { name: 'Увага!', value: 'Додайте: info / add / timeout / embed / color / prefix / edit / list / del', inline: true },
                 { name: '\u200B', value: '[Command](https://discord.gg/kXtxDhSgtu)', inline: false },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             return msg.channel.send({ embeds: [embed] });
           }
@@ -311,7 +310,7 @@ In order for your team to fit anywhere, inside the sentence:
 command <prefix * or pref *> <on or off> <command from list>
 `, inline: true },
               )
-              .setImage(Strip400)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             msg.channel.send({ embeds: [embed] });
 
@@ -352,7 +351,7 @@ command <prefix або pref> <on або off> <команда зі списку>
 command <prefix* або pref*> <on або off> <команда зі списку>
 `, inline: true },
               )
-              .setImage(Strip400)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             msg.channel.send({ embeds: [embed] });
 
@@ -374,7 +373,7 @@ command <prefix* або pref*> <on або off> <команда зі списку
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Warning!', value: 'Add: New command.', inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Discord', env.discordgif);
               return msg.channel.send({ embeds: [embed] });
             }
@@ -387,7 +386,7 @@ command <prefix* або pref*> <on або off> <команда зі списку
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Увага!', value: 'Додайте: Нову команду.', inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Discord', env.discordgif);
               return msg.channel.send({ embeds: [embed] });
             }
@@ -407,7 +406,7 @@ command <prefix* або pref*> <on або off> <команда зі списку
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Warning!', value: `The **${args[1]}** command already exists.`, inline: true },
                   )
-                  .setImage(Strip300)
+                  .setImage(StripMsg)
                   .setFooter('Discord', env.discordgif);
                 return msg.channel.send({ embeds: [embed] });
               }
@@ -420,7 +419,7 @@ command <prefix* або pref*> <on або off> <команда зі списку
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Увага!', value: `Команда **${args[1]}** вже існує.`, inline: true },
                   )
-                  .setImage(Strip300)
+                  .setImage(StripMsg)
                   .setFooter('Discord', env.discordgif);
                 return msg.channel.send({ embeds: [embed] });
               }
@@ -437,7 +436,7 @@ command <prefix* або pref*> <on або off> <команда зі списку
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Warning!', value: `The **${args[1]}** command already exists.`, inline: true },
                   )
-                  .setImage(Strip300)
+                  .setImage(StripMsg)
                   .setFooter('Discord', env.discordgif);
                 return msg.channel.send({ embeds: [embed] });
               }
@@ -450,7 +449,7 @@ command <prefix* або pref*> <on або off> <команда зі списку
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Увага!', value: `Команда **${args[1]}** вже існує.`, inline: true },
                   )
-                  .setImage(Strip300)
+                  .setImage(StripMsg)
                   .setFooter('Discord', env.discordgif);
                 return msg.channel.send({ embeds: [embed] });
               }
@@ -467,7 +466,7 @@ command <prefix* або pref*> <on або off> <команда зі списку
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Warning!', value: 'Add: Answer.', inline: true },
                   )
-                  .setImage(Strip300)
+                  .setImage(StripMsg)
                   .setFooter('Discord', env.discordgif);
                 return msg.channel.send({ embeds: [embed] });
               }
@@ -480,7 +479,7 @@ command <prefix* або pref*> <on або off> <команда зі списку
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Увага!', value: 'Додайте: Відповідь.', inline: true },
                   )
-                  .setImage(Strip300)
+                  .setImage(StripMsg)
                   .setFooter('Discord', env.discordgif);
                 return msg.channel.send({ embeds: [embed] });
               }
@@ -508,7 +507,7 @@ command <prefix* або pref*> <on або off> <команда зі списку
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Warning!', value: `Command **${create.command}** added successfully.`, inline: true },
                   )
-                  .setImage(Strip300)
+                  .setImage(StripMsg)
                   .setFooter('Discord', env.discordgif);
                 msg.channel.send({ embeds: [embed] });
               }
@@ -521,7 +520,7 @@ command <prefix* або pref*> <on або off> <команда зі списку
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Увага!', value: `Команда **${create.command}** успішно додана.`, inline: true },
                   )
-                  .setImage(Strip300)
+                  .setImage(StripMsg)
                   .setFooter('Discord', env.discordgif);
                 msg.channel.send({ embeds: [embed] });
               }
@@ -545,7 +544,7 @@ command <prefix* або pref*> <on або off> <команда зі списку
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Warning!', value: 'Add: Number of seconds from **1-60** / **off**', inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Discord', env.discordgif);
               return msg.channel.send({ embeds: [embed] });
             }
@@ -558,7 +557,7 @@ command <prefix* або pref*> <on або off> <команда зі списку
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Увага!', value: 'Додайте: Кількість секунд від **1-60** / **off**', inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Discord', env.discordgif);
               return msg.channel.send({ embeds: [embed] });
             }

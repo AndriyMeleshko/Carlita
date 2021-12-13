@@ -139,6 +139,7 @@ clientDiscord.once('ready', async (ready) => {
   }
 
   // Admin
+  require('../discord/admin/commands/rules/rules.js');
   require('../discord/admin/own/own.js');
 
   const live = require('../discord/admin/twitch/live.js');
@@ -181,6 +182,8 @@ clientDiscord.once('ready', async (ready) => {
   else {
     console.log('Missing File: ./discord/owner/test/own.js');
   }
+
+  require('../discord/owner/commands/send/send.js');
 });
 
 process.on('unhandledRejection', async (error) => {
@@ -195,8 +198,14 @@ clientDiscord.on('error', async (error) => {
 
 clientDiscord.on('interactionCreate', async (interaction) => {
 
+  const rulesButton = require('../discord/admin/commands/rules/rules.js');
+  rulesButton.interaction.RuleButton(interaction);
+
+  const rulesMenu = require('../discord/admin/commands/rules/rules.js');
+  rulesMenu.interaction.RuleMenu(interaction);
+
   const server = require('../discord/main/server/server.js');
-  server.interaction.Server(interaction);
+  server.interaction.ServerMenu(interaction);
 });
 
 clientDiscord.on('messageCreate', async (msg) => {
@@ -207,6 +216,9 @@ clientDiscord.on('messageCreate', async (msg) => {
   // Admin
   const embeds = require('../discord/admin/commands/commands.js');
   embeds.msg.Embed(msg);
+
+  const rules = require('../discord/admin/commands/rules/rules.js');
+  rules.msg.Rule(msg);
 
   const own = require('../discord/admin/own/own.js');
   own.msg.Own(msg);
@@ -232,26 +244,28 @@ clientDiscord.on('messageCreate', async (msg) => {
   const commands = require('../discord/owner/commands/commands.js');
   commands.msg.Commands(msg);
 
-  const ownerCommands = require('../discord/owner/test/commands.js');
-  ownerCommands.msg.Commands(msg);
-
-  const send = require('../discord/owner/send/send.js');
+  const send = require('../discord/owner/commands/send/send.js');
   send.msg.Send(msg);
+
+  const time = require('../discord/owner/commands/time/time.js');
+  time.msg.Time(msg);
 
   const status = require('../discord/owner/status/status.js');
   status.msg.Status(msg);
 
-  const testOwn = require('../discord/owner/test/own.js');
-  testOwn.msg.Own(msg);
-
-  const time = require('../discord/owner/time/time.js');
-  time.msg.Time(msg);
-
   const webhook = require('../discord/owner/webhooks/webhook.js');
   webhook.msg.Webhook(msg);
+
+  // Owner Test
+  const testCommands = require('../discord/owner/test/commands.js');
+  testCommands.msg.Commands(msg);
+
+  const testOwn = require('../discord/owner/test/own.js');
+  testOwn.msg.Own(msg);
 });
 
 clientDiscord.on('messageCreate', async (msg) => {
+
   if (msg.channel.type === 'GUILD_NEWS') {
     msg.crosspost()
       .then(() => console.log(`Channel: #${msg.channel.name} Crossposted message`))
@@ -259,6 +273,11 @@ clientDiscord.on('messageCreate', async (msg) => {
   }
 
   if (msg.author.bot) return;
+
+  const attachment = await msg.attachments;
+  attachment.map(async attach => {
+    console.log(attach.url);
+  });
 
   const lServ = await tServ.server.findOne({ where: { guildid: `${msg.guild.id}` } });
 
@@ -276,11 +295,6 @@ clientDiscord.on('messageCreate', async (msg) => {
       // if (statusIdle) console.log('Status: IDLE (msg)');
     }, 300 * 1000);
   }
-
-  const attachment = await msg.attachments;
-  attachment.map(async attach => {
-    console.log(attach.url);
-  });
 
   // const filter = m => m.content.startsWith('!vote');
   // msg.channel.awaitMessages({ filter, max: 1, time: 60_000, errors: ['time'] })

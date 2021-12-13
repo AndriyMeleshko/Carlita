@@ -53,7 +53,7 @@ module.exports.msg = {
     const owner = msg.member.id === env.ownerDiscordId;
     if (!owner) return;
 
-    const Strip300 = env.stripmsg300;
+    const StripMsg = env.stripMsg;
 
     const lStatus = await status.findOne({ where: { title: 'status' } });
 
@@ -73,7 +73,7 @@ module.exports.msg = {
             { name: '\u200B', value: '\u200B' },
             { name: 'Warning!', value: 'Add: online / idle / invisible / dnd', inline: true },
           )
-          .setImage(Strip300)
+          .setImage(StripMsg)
           .setFooter('Discord', env.discordgif);
         return msg.channel.send({ embeds: [embed] });
       }
@@ -92,7 +92,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Congratulations!', value: `Status: ${create.status}`, inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             msg.channel.send({ embeds: [embed] });
           }
@@ -114,7 +114,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Congratulations!', value: 'Status: ONLINE', inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             msg.channel.send({ embeds: [embed] });
           }
@@ -135,7 +135,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Congratulations!', value: `Status: ${create.status}`, inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             msg.channel.send({ embeds: [embed] });
           }
@@ -157,7 +157,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Congratulations!', value: 'Status: IDLE', inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             msg.channel.send({ embeds: [embed] });
           }
@@ -178,7 +178,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Congratulations!', value: `Status: ${create.status}`, inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             msg.channel.send({ embeds: [embed] });
           }
@@ -200,7 +200,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Congratulations!', value: 'Status: INVISIBLE', inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             msg.channel.send({ embeds: [embed] });
           }
@@ -221,7 +221,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Congratulations!', value: `Status: ${create.status}`, inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             msg.channel.send({ embeds: [embed] });
           }
@@ -243,7 +243,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Congratulations!', value: 'Status: DND', inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             msg.channel.send({ embeds: [embed] });
           }
@@ -259,7 +259,7 @@ module.exports.msg = {
               { name: '\u200B', value: '\u200B' },
               { name: 'Warning!', value: 'Add: Content.', inline: true },
             )
-            .setImage(Strip300)
+            .setImage(StripMsg)
             .setFooter('Discord', env.discordgif);
           return msg.channel.send({ embeds: [embed] });
         }
@@ -277,7 +277,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Congratulations!', value: `Name: ${args1l}`, inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             msg.channel.send({ embeds: [embed] });
           }
@@ -299,7 +299,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Congratulations!', value: `Name: ${args1l}`, inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             msg.channel.send({ embeds: [embed] });
           }
@@ -315,7 +315,7 @@ module.exports.msg = {
               { name: '\u200B', value: '\u200B' },
               { name: 'Warning!', value: 'Add: 1 / 2 / 3 / 5.', inline: true },
             )
-            .setImage(Strip300)
+            .setImage(StripMsg)
             .setFooter('Discord', env.discordgif);
           return msg.channel.send({ embeds: [embed] });
         }
@@ -338,7 +338,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Warning!', value: 'Add: Url', inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             msg.channel.send({ embeds: [embed] });
           }
@@ -357,7 +357,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Congratulations!', value: 'Type: STREAMING', inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Discord', env.discordgif);
               msg.channel.send({ embeds: [embed] });
             }
@@ -380,7 +380,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Congratulations!', value: 'Type: STREAMING', inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Discord', env.discordgif);
               msg.channel.send({ embeds: [embed] });
             }
@@ -401,7 +401,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Congratulations!', value: 'Type: LISTENING', inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Discord', env.discordgif);
               msg.channel.send({ embeds: [embed] });
             }
@@ -423,7 +423,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Congratulations!', value: 'Type: LISTENING', inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Discord', env.discordgif);
               msg.channel.send({ embeds: [embed] });
             }
@@ -444,7 +444,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Congratulations!', value: 'Type: WATCHING', inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Discord', env.discordgif);
               msg.channel.send({ embeds: [embed] });
             }
@@ -466,7 +466,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Congratulations!', value: 'Type: WATCHING', inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Discord', env.discordgif);
               msg.channel.send({ embeds: [embed] });
             }
@@ -487,7 +487,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Congratulations!', value: 'Type: COMPETING', inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Discord', env.discordgif);
               msg.channel.send({ embeds: [embed] });
             }
@@ -509,7 +509,7 @@ module.exports.msg = {
                   { name: '\u200B', value: '\u200B' },
                   { name: 'Congratulations!', value: 'Type: COMPETING', inline: true },
                 )
-                .setImage(Strip300)
+                .setImage(StripMsg)
                 .setFooter('Discord', env.discordgif);
               msg.channel.send({ embeds: [embed] });
             }
@@ -541,7 +541,7 @@ module.exports.msg = {
             { name: 'Type', value: `${Type}`, inline: true },
             { name: 'Url', value: `${Url}`, inline: true },
           )
-          .setImage(Strip300)
+          .setImage(StripMsg)
           .setFooter('Discord', env.discordgif);
         msg.channel.send({ embeds: [embed] });
       }

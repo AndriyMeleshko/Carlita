@@ -25,7 +25,7 @@ module.exports.msg = {
     const args = msg.content.slice(myPref.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-    const Strip300 = env.stripmsg300;
+    const StripMsg = env.stripMsg;
 
     const carlita = tCli.client.carlita;
 
@@ -48,7 +48,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Warning!', value: `Add:\nThe ID of the <@${carlita}> message you want to change and the new content of the message.\n\nThe ID of the <@${carlita}> message you want to change, the link (.jpg .jpeg .png .gif) and / or the new content of the message.`, inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             return msg.channel.send({ embeds: [exampleEmbed] });
           }
@@ -61,7 +61,7 @@ module.exports.msg = {
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Увага!', value: `Додайте:\nІдентифікатор повідомлення <@${carlita}> яке потрібно змінити та новий вміст повідомлення.\n\nІдентифікатор повідомлення <@${carlita}> яке потрібно змінити, посилання (.jpg .jpeg .png .gif) та/або новий вміст повідомлення.`, inline: true },
               )
-              .setImage(Strip300)
+              .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             return msg.channel.send({ embeds: [exampleEmbed] });
           }
@@ -78,7 +78,7 @@ module.exports.msg = {
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Warning!', value: 'Add: New content.', inline: true },
                   )
-                  .setImage(Strip300)
+                  .setImage(StripMsg)
                   .setFooter('Discord', env.discordgif);
                 return msg.channel.send({ embeds: [exampleEmbed] });
               }
@@ -91,7 +91,7 @@ module.exports.msg = {
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Увага!', value: 'Додайте: Новий вміст.', inline: true },
                   )
-                  .setImage(Strip300)
+                  .setImage(StripMsg)
                   .setFooter('Discord', env.discordgif);
                 return msg.channel.send({ embeds: [exampleEmbed] });
               }
@@ -138,7 +138,7 @@ module.exports.msg = {
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Warning!', value: 'Add: A valid message ID.', inline: true },
                   )
-                  .setImage(Strip300)
+                  .setImage(StripMsg)
                   .setFooter('Discord', env.discordgif);
                 return msg.channel.send({ embeds: [exampleEmbed] });
               }
@@ -151,7 +151,7 @@ module.exports.msg = {
                     { name: '\u200B', value: '\u200B' },
                     { name: 'Увага!', value: 'Додайте: Дійсний ідентифікатор повідомлення.', inline: true },
                   )
-                  .setImage(Strip300)
+                  .setImage(StripMsg)
                   .setFooter('Discord', env.discordgif);
                 return msg.channel.send({ embeds: [exampleEmbed] });
               }
