@@ -100,6 +100,7 @@ module.exports.msg = {
             .setDescription('Discord Send')
             .addFields(
               { name: '\u200B', value: '\u200B', inline: true },
+              { name: '\u200B', value: '\u200B', inline: true },
               { name: 'Warning!', value: 'Add: emb <ID> <Content> / <ID> <Content>', inline: true },
             )
             .setImage(StripMsg)
@@ -116,6 +117,7 @@ module.exports.msg = {
               .addFields(
                 { name: '\u200B', value: '\u200B', inline: true },
                 { name: 'Warning!', value: '<ID> <Content>', inline: true },
+                { name: '\u200B', value: '\u200B', inline: true },
               )
               .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
@@ -129,6 +131,7 @@ module.exports.msg = {
               .addFields(
                 { name: '\u200B', value: '\u200B', inline: true },
                 { name: 'Warning!', value: '<Content>', inline: true },
+                { name: '\u200B', value: '\u200B', inline: true },
               )
               .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
@@ -164,7 +167,11 @@ module.exports.msg = {
 
             const embed = new MessageEmbed()
               .setAuthor('Discord ', '', 'https://discord.com/')
-              .setDescription(`${args2l}`)
+              // .setDescription(`${args2l}`)
+              .addFields(
+                { name: '\u200B', value: '\u200B', inline: true },
+                { name: '\u200B', value: `${args2l}`, inline: true },
+              )
               .setImage(StripMsg)
               .setFooter('Discord', env.discordgif);
             const channelsend = channel.send({ embeds: [embed] });
@@ -199,6 +206,7 @@ module.exports.msg = {
             .addFields(
               { name: '\u200B', value: '\u200B', inline: true },
               { name: 'Channel Send ID', value: `${channelsendid}`, inline: true },
+              { name: '\u200B', value: '\u200B', inline: true },
             )
             .setImage(StripMsg)
             .setFooter('Discord', env.discordgif);
