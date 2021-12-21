@@ -32,5 +32,4 @@ This is the Carlita User Guide.
    :caption: Upgrade
 
    upgrade
-   upgrade-to-mint-20
 
