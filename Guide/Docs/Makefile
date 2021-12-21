@@ -5,7 +5,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = Linux Mint User Guide
+SPHINXPROJ    = Carlíta User Guide
 SOURCEDIR     = .
 BUILDDIR      = _build
 
