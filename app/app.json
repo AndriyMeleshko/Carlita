@@ -1,0 +1,94 @@
+{
+  "dotenv": "on",
+
+  "app": [
+    {
+      "tablesjs": "app/tables.js"
+    }
+  ],
+
+  "Discord": [
+    {
+      "alertsjs": "app/Discord/Commands/alerts4.js",
+      "alertssq": "app/Discord/Commands/alerts.sqlite",
+
+      "commandsjs": "app/Discord/Commands/commands.js",
+
+      "greetjs": "app/Discord/Commands/greet.js",
+      "greetsq": "app/Discord/Commands/greet.sqlite",
+
+      "numberjs": "app/Discord/Commands/number.js",
+      "numbersq": "app/Discord/Commands/number.sqlite",
+
+      "termsjs": "app/Discord/Commands/terms.js",
+      "termssq": "app/Discord/Commands/terms.sqlite"
+    },
+
+    {
+      "messagejs": "app/Discord/Events/message.js",
+      "readyjs": "app/Discord/Events/ready.js"
+    },
+
+    {
+      "sendjs": "app/Discord/System/send.js",
+      "sendsq": "app/Discord/System/send.sqlite",
+
+      "serversjs": "app/Discord/System/servers.js",
+      "serverssq": "app/Discord/System/servers.sqlite",
+
+      "statusjs": "app/Discord/System/status.js",
+      "statussq": "app/Discord/System/status.sqlite",
+
+      "menujs": "app/Discord/System/menu.js"
+    },
+
+    {
+      "discordjs": "app/Discord/discord.js"
+    }
+  ],
+
+  "Time": [
+    {
+      "timejs": "app/Time/time.js",
+      "timesq": "app/Time/time.sqlite"
+    }
+  ],
+
+  "Twitch": [
+    {
+      "commandsjs": "app/Twitch/Commands/commands.js",
+
+      "livejs": "app/Twitch/Commands/live.js",
+      "livesq": "app/Twitch/Commands/live.sqlite",
+      "messagejs": "app/Twitch/Commands/message.js",
+
+      "quotejs": "app/Twitch/Commands/quote.js",
+      "quotesq": "app/Twitch/Commands/quote.sqlite",
+
+      "speakjs": "app/Twitch/Commands/speak.js"
+    },
+
+    {
+      "chatjs": "app/Twitch/Events/chat.js"
+    },
+
+    {
+      "bearerjs": "app/Twitch/System/bearer.js",
+      "bearersq": "app/Twitch/System/bearer.sqlite",
+
+      "categoryjs": "app/Twitch/System/category.js",
+      "categorysq": "app/Twitch/System/category.sqlite",
+
+      "channelsjs": "app/Twitch/System/channels.js",
+      "channelssq": "app/Twitch/System/channels.sqlite",
+
+      "setjs": "app/Twitch/System/set.js",
+
+      "wordsjs": "app/Twitch/System/words.js"
+    },
+
+    {
+      "twitchjs": "app/Twitch/twitch.js"
+    }
+  ]
+}
