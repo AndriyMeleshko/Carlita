@@ -1,0 +1,39 @@
+{
+  "name": "carlita",
+  "version": "0.1.0",
+  "description": "A simple Node app built on fastify, instantly up and running. Built to be remixed on Glitch.com.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --trace-warnings server.js"
+  },
+  "dependencies": {
+    "@discordjs/voice": "^0.18.0",
+    "bufferutil": "^4.0.9",
+    "discord.js": "^14.17.3",
+    "dotenv": "^16.4.7",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.5.46",
+    "node-fetch": "^2.6.7",
+    "sequelize": "^6.37.5",
+    "sqlite3": "^5.1.7",
+    "tmi.js": "^1.8.5",
+    "utf-8-validate": "^6.0.5",
+    "weather-js": "^2.0.0",
+    "zlib-sync": "^0.1.9"
+  },
+  "engines": {
+    "node": "22.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/glitch-hello-node"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch"
+  ],
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "eslint": "^9.19.0"
+  }
+}
